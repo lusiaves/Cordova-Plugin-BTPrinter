@@ -719,7 +719,7 @@ public class BluetoothPrinter extends CordovaPlugin {
 			// Set error correction level - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=142
 			byte qr_eclevel = Integer.toHexString(eclevel).getBytes()[0];
 			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x45, qr_eclevel });
-			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x69, 0x49 });
+			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x69, 0x31 });
 
 			// Store the data in the symbol storage area - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=143
 			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B });
