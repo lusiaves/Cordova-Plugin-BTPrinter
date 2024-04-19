@@ -700,7 +700,7 @@ public class BluetoothPrinter extends CordovaPlugin {
 
 			// Set alignment
 			byte[] new_align = selAlignTitle(align);
-            mmOutputStream.write(new_align);
+            		mmOutputStream.write(new_align);
 
 			// Set QR model - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=140
 			byte qr_model = Integer.toHexString(model).getBytes()[0];
@@ -709,7 +709,12 @@ public class BluetoothPrinter extends CordovaPlugin {
 			// Set QR size - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=141
 			byte qr_size = Integer.toHexString(size).getBytes()[0];
 			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x43, qr_size });
-			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x67, qr_size });
+			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x67, qr_size });
+
+			/*QR CODE Size command*/			
+			String sizeCommand = '1D286B3067'+size;
+			mmOutputStream.write(sizeCommand.getBytes());
+			
 
 			// Set error correction level - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=142
 			byte qr_eclevel = Integer.toHexString(eclevel).getBytes()[0];
