@@ -709,7 +709,7 @@ public class BluetoothPrinter extends CordovaPlugin {
 			// Set QR size - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=141
 			byte qr_size = Integer.toHexString(size).getBytes()[0];
 			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x43, qr_size });
-			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x67, 0x10 });
+			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x67, 0x0A });
 
 			/*QR CODE Size command*/			
 			//String sizeCommand = "1D286B3067"+size;
