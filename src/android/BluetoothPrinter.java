@@ -712,7 +712,7 @@ public class BluetoothPrinter extends CordovaPlugin {
 			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x67, qr_size });
 
 			/*QR CODE Size command*/			
-			String sizeCommand = '1D286B3067'+size;
+			String sizeCommand = "1D286B3067"+size;
 			mmOutputStream.write(sizeCommand.getBytes());
 			
 
