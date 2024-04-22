@@ -700,7 +700,7 @@ public class BluetoothPrinter extends CordovaPlugin {
 
 			// Set alignment
 			byte[] new_align = selAlignTitle(align);
-            mmOutputStream.write(new_align);
+            		//#mmOutputStream.write(new_align);
 
 			// Set QR model - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=140
 			byte qr_model = Integer.toHexString(model).getBytes()[0];
