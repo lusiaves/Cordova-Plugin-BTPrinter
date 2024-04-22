@@ -732,7 +732,7 @@ public class BluetoothPrinter extends CordovaPlugin {
 			mmOutputStream.write(data.getBytes(encoding));			
 
 			// Print the symbol data in the symbol storage area
-			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x51, 0x30 });
+			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x51, 0x30 });
 			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x81 });
 
 			// Reset align
