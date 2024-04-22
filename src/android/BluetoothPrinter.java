@@ -726,7 +726,7 @@ public class BluetoothPrinter extends CordovaPlugin {
 			//#mmOutputStream.write(data.getBytes());
 
 			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B });
-			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x80 });
+			mmOutputStream.write(new byte[]{ (byte)0x1D, (byte)0x28, (byte)0x6B, (byte)0x30, (byte)0x80 });
 			mmOutputStream.write(qr_pL.getBytes());
 			mmOutputStream.write(qr_pH.getBytes());
 			mmOutputStream.write(data.getBytes());			
