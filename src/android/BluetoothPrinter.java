@@ -719,14 +719,20 @@ public class BluetoothPrinter extends CordovaPlugin {
 			//mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x69, qr_eclevel });
 
 			// Store the data in the symbol storage area - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=143
-			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B });
+			//#mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B });
+			//#mmOutputStream.write(qr_pL.getBytes());
+			//#mmOutputStream.write(qr_pH.getBytes());
+			//#mmOutputStream.write(new byte[]{ 0x31, 0x50, 0x30 });
+			//#mmOutputStream.write(data.getBytes());
+			
+			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x80});
 			mmOutputStream.write(qr_pL.getBytes());
 			mmOutputStream.write(qr_pH.getBytes());
-			mmOutputStream.write(new byte[]{ 0x31, 0x50, 0x30 });
-			mmOutputStream.write(data.getBytes());
+			mmOutputStream.write(data.getBytes());			
 
 			// Print the symbol data in the symbol storage area
-			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x51, 0x30 });
+			//#mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x51, 0x30 });
+			mmOutputStream.write(new byte[]{ 0x1D, 0x28, 0x6B, 0x30, 0x81 });
 
 			// Reset align
 			mmOutputStream.write(ESC_ALIGN_LEFT);
