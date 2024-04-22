@@ -695,8 +695,14 @@ public class BluetoothPrinter extends CordovaPlugin {
     boolean printQRCode(CallbackContext callbackContext, String data, int align, int model, int size, int eclevel) throws IOException {
         try {
             // Print QR code
-			final String qr_pL = Character.toString((char)((data.length() + 3) % 256));
-			final String qr_pH = Character.toString((char)((data.length() + 3) / 256));
+			//final String qr_pL = Character.toString((char)((data.length() + 3) % 256));
+			//final String qr_pH = Character.toString((char)((data.length() + 3) / 256));
+
+			int data_length = data.length() + 3;
+		        int pL = data_length % 256;
+		        int pH = data_length / 256;
+			final String qr_pL = Integer.toHexString(pL);
+			final String qr_pH = Integer.toHexString(pH);
 
 			// Set alignment
 			byte[] new_align = selAlignTitle(align);
