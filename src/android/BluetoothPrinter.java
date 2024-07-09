@@ -121,7 +121,15 @@ public class BluetoothPrinter extends CordovaPlugin {
         } else if (action.equals("setEncoding")) {
             encoding = args.getString(0);
             return true;
-        } else if (action.equals("printText")) {
+	} else if (action.equals("clearBuffer")) {
+	    try {
+	        clearBuffer();
+	    } catch (IOException e) {
+	        Log.e(LOG_TAG, "Erro ao limpar o buffer: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	    return true;
+	} else if (action.equals("printText")) {
             try {
                 String msg = args.getString(0);
                 printText(callbackContext, msg);
@@ -398,6 +406,28 @@ public class BluetoothPrinter extends CordovaPlugin {
             e.printStackTrace();
         }
     }
+
+private void clearBuffer() {
+    try {
+        // Verifica se o OutputStream não é nulo
+        if (mmOutputStream != null) {
+            // Limpa o OutputStream, garantindo que todos os dados pendentes sejam enviados
+            mmOutputStream.flush();
+        }
+        // Verifica se o InputStream não é nulo
+        if (mmInputStream != null) {
+            // Continua a ler do InputStream enquanto houver dados disponíveis
+            while (mmInputStream.available() > 0) {
+                // Lê e descarta os dados do InputStream
+                mmInputStream.read();
+            }
+        }
+        Log.d(LOG_TAG, "BUFFER CLEARED");
+    } catch (IOException e) {
+        e.printStackTrace();
+        Log.e(LOG_TAG, "Erro ao limpar o buffer: " + e.getMessage());
+    }
+}	
 
     // Print title formatted
     boolean printTitle(CallbackContext callbackContext, String msg, Integer size, Integer align) throws IOException {
